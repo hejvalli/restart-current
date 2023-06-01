@@ -3,40 +3,6 @@
 import React, { useState, useEffect} from 'react';
 
 export default function LogicHandlerLevent () {
-  const [data, setData] = useState(null);
-
-  async function updateData(input) {
-    try {
-      const response = await fetch('/api/handler', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(input),
-      });
-  
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-  
-      const data = await response.json();
-      setData(data);
-    } catch (error) {
-      console.error('Error:', error);
-    }
-  }
-
-  async function fetchData() {
-    const response = await fetch('/api/handler');
-    const data = await response.json();
-    setData(data);
-  }
-  useEffect(() => {
-    fetchData();
-  const intervalId = setInterval(fetchData, 1500); // Fetch data every 1.5 seconds
-
-    return () => clearInterval(intervalId); // Clear interval on component unmount
-  }, []);
 
     const matrixData = {
     firstSet: {
@@ -157,9 +123,7 @@ export default function LogicHandlerLevent () {
       }
   }, [data?.choice,stopTime, url, question, choice1, choice2, saveChoice]);
 
-  useEffect(()=>{
-    updateData({stopTime, url, question, choice1, choice2, saveChoice})
-  }, [stopTime, url, question, choice1, choice2, saveChoice])
+
 
   return (
     <div>{data?.url}</div>
