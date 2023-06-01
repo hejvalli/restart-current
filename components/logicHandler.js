@@ -155,9 +155,11 @@ export default function LogicHandlerLevent () {
         default:
           break;
       }
-      updateData({stopTime, url, question, choice1, choice2, saveChoice})
   }, [data?.choice,stopTime, url, question, choice1, choice2, saveChoice]);
 
+  useEffect(()=>{
+    updateData({stopTime, url, question, choice1, choice2, saveChoice})
+  }, [stopTime, url, question, choice1, choice2, saveChoice])
 
   return (
     <div>{data?.url}</div>
