@@ -26,8 +26,6 @@ const QuestionUI = () => {
       console.error('Error:', error);
     }
   }
-  
-  
 
   async function fetchData() {
     const response = await fetch('/api/handler');
